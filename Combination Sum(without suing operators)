@@ -1,0 +1,15 @@
+int getSum(int a, int b) {
+        //when a is positive then jab tak a zero tak nh aajata b ko plus krte rho
+        while(a>0)
+        {
+            b++;
+            a--;
+        }
+// when 'a' negative h toh b decrease hoga, example, a=-1 and b=1 so answer is 0;
+        while(a<0)
+        {
+            b--;
+            a++;
+        }
+        return b;
+    }
