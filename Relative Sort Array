@@ -1,0 +1,29 @@
+class Solution {
+public:
+ // this question also done by frequency array but run time error occured
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        map<int, int>m; //we count frequency so optimize data structure ,i.e, map use...
+        vector<int> v;
+      for(int i=0;i<arr1.size();i++)
+      {
+          m[arr1[i]- 0]++; // for count
+      }
+       for(int i=0;i<arr2.size();i++)
+       {
+           while(m[arr2[i]-0]-- > 0) //arr2 m jo value h or jitni baar aayi h jab tak zero nhi ho jati tab tak unn value ko push krte rho
+            {
+                v.push_back(arr2[i]);
+            }
+       }
+       for(auto x : m)//map m jo value reh gyi h jo aar2 m nhi thi ab unhe push kro
+       {
+           while(x.second-- > 0) //value jab tak zero nhi hoti usse push kro
+           {
+               v.push_back(x.first);// or whi value ko push krne k liye x.first ka use kia
+           }
+       }
+        
+        
+   return v;
+    }
+};
