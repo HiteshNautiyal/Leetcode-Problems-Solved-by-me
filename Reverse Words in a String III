@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+
+        //left and right point krenge hmesa ek jgh pe
+        //right aage jayega or agr space mila toh ruk jayega
+        //then, left se right tak words ko reverse krte jao
+        
+        int left=0, right;
+
+        while(left < s.length())
+        {
+            right = left;
+            while(right<s.length() and s[right] != ' ')
+            {
+                right++;
+            }
+            reverse(s.begin()+left, s.begin()+right);
+        //left abhi space character pe point krrha hai
+            left = right + 1;//then humme usse aage point krana hai becoz space hmesa space se hi fill honi chahiye...
+        }
+ 
+
+     
+        return s;
+    }
+};
