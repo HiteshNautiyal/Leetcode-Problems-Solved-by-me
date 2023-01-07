@@ -1,0 +1,30 @@
+int myAtoi(string s) {
+        //WhiteSpaces always in starting otherwise not in a string
+        int i = 0;
+        bool flag = false;//this for check '-' or '+' operator in a string or not
+        while(i < s.size()) { 
+            if(s[i] == ' ') i++; //check if spaces in starting of string then aage badho otherwise break the loop  
+            else break;       
+        }
+        if(s[i] == '-') { // after ignore whitespaces we check negative operator hai toh
+            flag = true;
+            i++;//aage badho 
+        }
+        else if(s[i] == '+') i++;//agr positive operator h toh bs aage badho
+
+        long long int integer = 0; // this for store numbers
+        for(int j=i; j<s.size(); j++) {
+            if(s[j] >= '0' and s[j] <= '9') { // agr digit 0 to 9 hai toh
+                integer =  integer * 10 + (s[j] - '0'); // phle string hai usse integer banao then usse add krte jao sath-sath by above formula
+                if(integer >= INT_MAX) break; //agr integer range s baar aaya toh break the loop  
+            }
+            else break;
+        }
+        
+        if(flag) integer *= -1; // agr negative operator hai toh (-1) se multiply kro jisse pura integer negative ho jaye
+
+         if(integer <= INT_MIN) return INT_MIN;
+        else if(integer >= INT_MAX) return INT_MAX;
+       
+        return integer;
+    }
