@@ -1,0 +1,51 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+
+        // this is O(n^2) ,i.e, runtime error occured
+
+        // vector<int> v;
+        // bool flag = false;
+        // for(int i=0;i<numbers.size()-1;i++)
+        // {
+        //     int j;
+        //     for(j=i+1;j<numbers.size();j++)
+        //     {
+        //         if(numbers[i]+numbers[j] == target)
+        //         {
+        //             flag = true;
+        //             break;
+
+        //         }
+        //     }
+        //     if(flag)
+        //     {
+        //         v.push_back(i+1);
+        //         v.push_back(j+1);
+        //         break;
+        //     }
+        // }
+        // return v;
+
+       
+       // this is optimized way, i.e, O(logN)
+        vector<int> v;
+        int left = 0;
+        int  right = numbers.size()-1;
+        while(left<right)
+        {
+            if(numbers[left]+numbers[right] > target)//agr target s jyda hai sum toh large value ko minus kro
+            right--;
+            else if(numbers[left]+numbers[right] < target)//agr target s less hai toh lowest value ko plus kro
+            left++;
+            else//means agr target mil jata h toh push krdo and break krdo
+            {
+            v.push_back(left+1);
+            v.push_back(right+1);
+            break;
+            }
+        }
+        return v;
+        
+    }
+};
