@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+       vector<int> v;
+
+       set<int> s;//if we store only unique values we use "SET"...
+
+       for(int i=0;i<nums2.size();i++)
+       {
+           
+
+           for(int j=0;j<nums1.size();j++)
+           {
+               if(nums2[i]==nums1[j])
+               {
+                   s.insert(nums2[i]);//apne aap duplicate remove and store value only once
+                   break;
+               }
+           }
+       }
+    //Now, store all values of "SET" into "VECTOR"...
+       v.assign(s.begin(),s.end());
+
+       
+       return v;
+
+    }
+};
