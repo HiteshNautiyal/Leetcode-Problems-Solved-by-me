@@ -1,0 +1,21 @@
+class Solution {
+public:
+   
+    int balancedStringSplit(string s) {
+          int count = 0;//this variable for check 'R' character present in a string
+          int ans = 0;//this variable for check whose substring which has balanced string
+        for(int i=0;i<s.length();i++)
+        {
+            if(s[i]=='R')//'R' character hai string mei toh increase kro count 
+            count++;
+            else //'L' character h toh decrease kro count
+            count--;
+
+            if(count==0)//jab bh 'L' and 'R' ka count zero hoga means wo substring mil gya jnh balanced horha hai 
+            ans++;
+      
+        }
+        return ans;
+        
+    }
+};
