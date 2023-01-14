@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<int> constructRectangle(int area) {
+        vector<int> v;
+       
+
+        int x = sqrt(area);//Example: sqrt(4)=2, means 2 se jyda jo bh number honge usme remainder kuch na kuch aayega hi so usse phle tak hi check kro
+        int width;
+         
+// i=1, 4%1==0 hota h toh widht mei 1 store kro but when , i=2 then 4%2==0 hota hai so i jitna increase hoga utna area or i ka difference less hoga so widht mei 2 store krdo...
+
+        for(int i=1;i<=x;i++)
+        {
+            if(area%i == 0)
+            width = i;
+
+        }
+
+        int length = area/width; // 4/2 == 2
+
+        v.push_back(length);
+        v.push_back(width);
+
+        return v;
+
+
+            
+
+        
+    }
+};
