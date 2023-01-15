@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        
+        //in given question only one number is repeated so we store in a 'int' type
+
+        //first, we count their frequencies!!!
+        
+        //offset and overflow variable means contraint size dekho like nums ka length n+1 hai so we create frequency array or n(10e5)+1...
+        
+        int freq[1000002] = {0};
+        for(int i=0;i<nums.size();i++)
+        {
+            int index = nums[i] + 0;
+            freq[index]++;
+        }
+
+        //now we check whose frequency is more than 1 that's my answer!!!
+       int x;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(freq[i] > 1)
+            {
+                 x = i;
+                 break;
+            }
+             
+        }
+        return x;
+    }
+};
