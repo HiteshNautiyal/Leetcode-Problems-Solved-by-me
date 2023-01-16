@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        
+        // We use Kadane's Algorithm for optimised Maximum Subarray Sum!!!
+        int local = nums[0];//this point for internal traverse for find maximum array element
+        int global = nums[0]; //this point for external traverse for maximum element after local variable check
+
+        for(int i=1;i<nums.size();i++)
+        {
+            local = max(nums[i], nums[i]+local);
+
+            global = max(global, local);
+        }
+        return global;
+        
+    }
+};
