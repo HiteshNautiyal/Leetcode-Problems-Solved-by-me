@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int maxPower(string s) {
+        int max = INT_MIN;
+        
+       for(int i=0; i<s.length();i++)//starting wale loop mei traverse end tak kro string ke because we always check last string and answer should be 1...
+       {
+           int count = 1;
+           for(int j=i+1;j<s.length();j++)
+           {
+               if(s[i]==s[j])
+               {
+                   count++;
+                   
+               }
+               else
+               break;
+           }
+           if(max<count)
+           max = count;
+       }
+
+       return max;
+    }
+};
