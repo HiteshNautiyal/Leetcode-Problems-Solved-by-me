@@ -1,0 +1,37 @@
+//Power of a set : subset of a set . In these we use "INCLUDE/EXCLUDE PRINCIPLE".
+
+
+class Solution {
+    void solve(vector<int> nums, int i, vector<vector<int>>&result, vector<int> ans)
+    {
+        //base case
+        if(i > nums.size()-1)
+        {
+            result.push_back(ans);
+            return;
+
+        }
+
+        //exclude this is for empty subset of a set 
+        solve(nums, i+1, result, ans);
+
+        //include when we want to add element in a subset of a set
+        int element  = nums[i];
+        ans.push_back(element);
+        solve(nums, i+1, result, ans);
+    }
+
+
+
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        
+        vector<vector<int>> result;
+
+        vector<int> ans;
+
+        int i = 0;
+        solve(nums, i, result, ans);
+        return result;
+    }
+};
