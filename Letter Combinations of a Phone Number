@@ -1,0 +1,42 @@
+class Solution {
+    void solve(string digits, int i, vector<string> &result, string ans, string mapping[])
+    {
+        //base case
+        if(i >= digits.length())
+        {
+            result.push_back(ans);
+            return;
+
+        }
+
+        int number = digits[i] - '0';//string to number conversion
+
+        string element = mapping[number];//mapping use krke wo string find kr rhe hai
+
+        for(int j=0; j<element.length(); j++)
+        {
+            ans.push_back(element[j]);//only add = "a", "b", so on
+            solve(digits, i+1, result, ans, mapping);//in this we add = "ad", "ae", "af", "bd", so on
+                
+                ans.pop_back();//Backtracking because recusrion ke time hum ek string ke character la rhe the so return k time humne usse remove krne honge jisse hum wapis empty string mei aajaye like we remove "a" so after this we start with "b" understood aese work kr rha hai yeh backtrack...
+        }
+
+        
+    }
+
+
+public:
+    vector<string> letterCombinations(string digits) {
+        
+        vector<string> result;
+        string ans = "";
+
+        if(digits.length() == 0)//when given string is empty 
+        return result;
+
+        int i=0;
+        string mapping[10] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        solve(digits, i, result, ans, mapping);
+        return result;
+    }
+};
