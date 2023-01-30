@@ -1,0 +1,31 @@
+class Solution {
+
+    void solve(vector<int> nums, vector<vector<int>> &result, int index)
+    {
+        //base case
+        if(index >= nums.size())
+        {
+            result.push_back(nums);
+            return;
+        }
+
+        for(int i = index; i < nums.size(); i++) //yeh iterator string mein traverse krega
+        {
+            swap(nums[i], nums[index]);//jnha pe iterator hoga uss position pe swapping krna hai 
+            solve(nums, result, index+1);//har ek character string ka uss iterartor pe aana chahiye ek baari
+
+            swap(nums[i], nums[index]);//Backtracking //becoz hum original string pe baar baaar changes kr rh e hai so return k time hume usse wapis phle jesa krna hota hai consistent rkhne ke liye
+        }
+    }
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+
+        vector<vector<int>> result;
+
+        solve(nums, result, 0);
+        return result;
+    }    
+    
+};
+
+ 
