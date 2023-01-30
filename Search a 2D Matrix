@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+    int row_length = matrix.size();
+    int col_length = matrix[0].size();
+    
+    
+    //improtant point : row and column both are sorted way means when element in row 1 and col 2 is large than key so uss col ke niche row m sb large hi honge toh traverse krna hi kyu h time waste hoga...
+    
+    int start = 0; //yeh row wise bdega
+    int end = col_length - 1; //yeh column wise bdega
+    
+    while(start < row_length and end >= 0)
+    {
+        if(matrix[start][end] == target)//key found
+        {
+            return 1;
+        }
+        else if(matrix[start][end] < target)//when our search value is smaller than key so hum same column pe niche row m jayenge becoz niche wala row same column m phle wale se large value hogi...
+        {
+            start++;
+        }
+        else if(matrix[start][end] > target)//when our search value is greater than key then we go same row pe left column pe aate rhenge 
+        {
+            end--;
+        }
+            
+    }
+   
+   return 0;
+    
+    
+    }
+};
