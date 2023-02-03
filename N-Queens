@@ -1,0 +1,92 @@
+class Solution {
+//     void store(vector<vector<string>> &board, vector<vector<string>> &ans, int n)//store 2D matrix elements
+// {
+//     vector<char> v;
+//     for(int i=0;i<n;i++)
+//     {
+//       for (int j = 0; j < n; j++)
+//     {
+//         v.push_back(board[i][j]);
+//     }
+//     }
+//     ans.push_back(v);
+// }
+
+
+    bool is_safe(int row, int col, vector<string> &board, int n)
+{
+    int x= row, y= col;
+    //check for same row
+    while(y >= 0)
+    {
+        if(board[x][y] == 'Q')
+        return false;
+
+        y--;
+    }
+
+    x= row;
+    y= col;
+    
+    //check for diagonal
+    while(x>=0 and y>=0)
+    {
+        if(board[x][y] == 'Q')
+        return false;
+
+        y--;
+        x--;
+    }
+    
+    x=row;
+    y=col;
+
+    //check for diagonal
+    while(x<n and y>=0)
+    {
+        if(board[x][y] == 'Q')
+        return false;
+
+        y--;
+        x++;
+    }
+    return true;
+
+}
+
+
+
+    void solve(int col, vector<vector<string>> &ans, vector<string> &board, int n)  
+{
+    //base case
+    if(col == n)
+    {
+        // store(board, ans, n);
+        ans.push_back(board);
+     
+        return;
+    }
+
+    for(int row=0; row<n; row++)
+    {
+      if (is_safe(row, col, board, n)) {
+        board[row][col] = 'Q';
+
+        solve(col + 1, ans, board, n);//iss call se humei ab harr column ke liye check krne ki need nahi
+
+        board[row][col] = '.';//Backtracking
+      }
+    }
+}
+
+
+public:
+    vector<vector<string>> solveNQueens(int n) {
+        vector<string> board(n, string(n,'.'));
+
+    vector<vector<string>> ans;
+
+    solve(0, ans, board, n);
+    return ans;
+    }
+};
